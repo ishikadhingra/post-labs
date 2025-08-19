@@ -20,7 +20,61 @@
 }
 
 body {
-  background: var(--background);
+  background: #fafaf5;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.card{
+
+
+    background-color: #000;
+    color: var(--_primary---white);
+    border-radius: 40px;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 424px;
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+}.card p {
+  margin-top: 158px;
+  font-size: 41px;
+  color: #fff;
+}
+.background-grid {
+  z-index: 1;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-rows: auto;
+  grid-template-columns: 20% 1fr 1fr 20%;
+  grid-auto-columns: 1fr;
+  display: grid;
+  position: fixed; /* stays on scroll */
+inset: 0;        /* full viewport */
+height: 100%;
+
+  /* ✅ Vertical background lines */
+  background-image: repeating-linear-gradient(
+    to right,
+    #e5e5e5 0px,
+    #e5e5e5 1px,
+    transparent 1px,
+    transparent 25%
+  );
+}
+.middle-text{
+  text-align: center;
+    width: 594px;
+    margin-bottom: 40vh;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 52px;
+    line-height: 115%;
+    overflow: hidden;
+    margin-top: 60vh;
+}
+.icon{
+  width: 12%;
 }
