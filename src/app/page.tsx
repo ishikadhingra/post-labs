@@ -6,6 +6,7 @@ import Marquee from "@/app/components/marquee";
 import Hero from "@/app/components/hero";
 import Card from "@/app/components/card";
 import ColorText from "@/app/components/colortext";
+import Button from "@/app/components/button";
 import Link from "next/link";
 export default function Home() {
   return (
@@ -129,10 +130,10 @@ export default function Home() {
 <VideoSectionSecond/>
 {/* second video */}
 {/* investor */}
-  <section className="grid grid-cols-1 md:grid-cols-2 min-h-screen bg-gradient-to-t from-yellow-300 to-white border-t border-gray-200">
+  <section className="grid grid-cols-1 md:grid-cols-2 h-[120vh] bg-gradient-to-t from-yellow-300 to-white border-t border-gray-200">
   {/* Left Side - Investors */}
-  <div className="flex flex-col justify-center px-6 md:px-12 py-16 md:py-20 bg-white md:border-r border-gray-200">
-    <h2 className="text-3xl md:text-5xl font-bold mt-[-250px]">For Investors</h2>
+  <div className="flex flex-col justify-center px-6 md:px-12 py-16 md:py-20  md:border-r border-gray-200">
+    <h2 className="text-7xl   mt-[-250px]">For Investors</h2>
     <p className="text-gray-700 mb-6 max-w-lg leading-relaxed">
       We’re raising capital to scale fast. If you’re an investor who believes in 
       the future of independent Canadian media, we’d love to speak with you.
@@ -148,7 +149,7 @@ export default function Home() {
   {/* Right Side - Builders */}
   
   <div className="flex flex-col justify-center px-6 md:px-12 py-16 md:py-20">
-    <h2 className="text-3xl md:text-5xl font-bold mt-[292px]">For Builders</h2>
+    <h2 className="text-7xl   mt-[292px]">For Builders</h2>
     <p className="text-gray-700 mb-6 max-w-lg leading-relaxed">
       We’re hiring. If you’re passionate about media, technology, and the 
       future of Canada’s digital ecosystem, come build with us. We’re always 
@@ -169,7 +170,9 @@ export default function Home() {
         </div>
       </div>
       
+
       <Footer/>
+      <Button/>
     </>
   );
 }

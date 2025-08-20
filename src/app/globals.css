@@ -34,13 +34,13 @@ body {
     flex-flow: column;
     justify-content: space-between;
     align-items: flex-start;
-    min-height: 424px;
-    padding: 40px;
+    
+   
     position: relative;
     z-index: 1;
 }.card p {
-  margin-top: 158px;
-  font-size: 41px;
+  margin-top: 130px;
+  font-size: 30px;
   color: #fff;
 }
 .background-grid {
@@ -52,8 +52,8 @@ body {
   grid-auto-columns: 1fr;
   display: grid;
   position: fixed; /* stays on scroll */
-inset: 0;        /* full viewport */
-height: 100%;
+ inset: 0;        /* full viewport */
+ height: 100%;
 
   /* ✅ Vertical background lines */
   background-image: repeating-linear-gradient(
