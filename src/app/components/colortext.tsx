@@ -7,17 +7,18 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function MiddleText() {
-  const textRef = useRef(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
     const el = textRef.current;
     if (!el) return;
 
     // Split text into word spans (preserve spaces)
-    const original = el.textContent || "";
+    const original: string = el.textContent || "";
     el.innerHTML = "";
-    const tokens = original.match(/\S+|\s+/g) || [];
-    const wordSpans = [];
+    const tokens: string[] = original.match(/\S+|\s+/g) || [];
+    const wordSpans: HTMLSpanElement[] = [];
+
     tokens.forEach((tok) => {
       if (/^\s+$/.test(tok)) {
         el.appendChild(document.createTextNode(tok));
@@ -31,24 +32,20 @@ export default function MiddleText() {
       }
     });
 
-    const updateColors = (progress) => {
+    const updateColors = (progress: number) => {
       const total = wordSpans.length;
       if (total === 0) return;
       const active = Math.floor(progress * (total - 1));
 
-      // loop through words
       for (let i = 0; i < total; i++) {
         if (i <= active) {
-          // already passed → full dark
           wordSpans[i].style.color = "rgba(0,0,0,1)";
         } else {
-          // upcoming words stay faded
           wordSpans[i].style.color = "rgba(0,0,0,0.1)";
         }
       }
     };
 
-    // ScrollTrigger animation
     const st = ScrollTrigger.create({
       trigger: el,
       start: "top 85%",

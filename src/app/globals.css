@@ -34,7 +34,7 @@ body {
     flex-flow: column;
     justify-content: space-between;
     align-items: flex-start;
-    
+    width: 300px;
    
     position: relative;
     z-index: 1;

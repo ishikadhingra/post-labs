@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-black text-white border-t border-gray-800 relative z-1">
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div className="w-full px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         
         {/* Logo */}
         <div>
@@ -56,13 +56,13 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white-800 py-6 text-sm text-white-200 flex justify-between items-center px-5  max-w-[100%] mx-auto">
+      <div className="border-t border-white-800 py-6 text-sm text-white-200 flex justify-between items-center px-5 w-full">
         <p>© 2025 Post Labs, Inc. All rights reserved.</p>
         <a href="#" className="underline hover:text-gray-200">
           Designed by HRVST.
         </a>
       </div>
     </footer>
-    
-  );
+    
+  );
 }
