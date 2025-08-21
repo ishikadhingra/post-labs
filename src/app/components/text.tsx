@@ -40,7 +40,7 @@ export default function TextSection() {
       {/* Section 1 */}
       <section className="relative w-full bg-[#f9f9f5] py-[20vh] md:py-[30vh] px-6 md:px-20">
         <div className="relative flex items-center justify-start">
-          <img
+          <Image
             src="/icon-4.svg"
             alt="Background Icon"
             className="opacity-71 icon"

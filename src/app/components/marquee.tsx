@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Link from "next/link";
@@ -6,29 +6,39 @@ import Image from "next/image";
 import { useRef } from "react";
 
 export default function Marquee() {
-  const marqueeRef = useRef(null);
+  const marqueeRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
-    // Animation
     const tl = gsap.to(".marquee-track", {
-      xPercent: -50,     // move half (since duplicated)
-      duration: 20,      // slower speed (increase for even slower)
+      xPercent: -50, // move half (since duplicated)
+      duration: 20,  // slower speed (increase for even slower)
       repeat: -1,
-      ease: "linear"
+      ease: "linear",
     });
 
-    // Pause / resume on hover
     const marqueeEl = marqueeRef.current;
-    marqueeEl.addEventListener("mouseenter", () => tl.pause());
-    marqueeEl.addEventListener("mouseleave", () => tl.resume());
-  });
+    if (!marqueeEl) return;
+
+    const handleEnter = () => tl.pause();
+    const handleLeave = () => tl.resume();
+
+    marqueeEl.addEventListener("mouseenter", handleEnter);
+    marqueeEl.addEventListener("mouseleave", handleLeave);
+
+    return () => {
+      marqueeEl.removeEventListener("mouseenter", handleEnter);
+      marqueeEl.removeEventListener("mouseleave", handleLeave);
+    };
+  }, []);
 
   // A single "slide" (text + arrow)
   const Slide = () => (
     <div className="flex items-center gap-6 relative z-[1]">
       <h1 className="text-white text-2xl md:text-4xl lg:text-[56px] whitespace-nowrap px-6 md:px-10 py-6">
         Ready to Build the Future of Canadian Media?{" "}
-        <Link href={"#"} className="underline">Contact Us</Link>
+        <Link href={"#"} className="underline">
+          Contact Us
+        </Link>
       </h1>
       <Image
         src="/download.svg"
@@ -41,7 +51,10 @@ export default function Marquee() {
   );
 
   return (
-    <div ref={marqueeRef} className="overflow-hidden bg-black w-full marquee relative z-1">
+    <div
+      ref={marqueeRef}
+      className="overflow-hidden bg-black w-full marquee relative z-1"
+    >
       <div className="flex marquee-track">
         {/* First copy */}
         <Slide />
