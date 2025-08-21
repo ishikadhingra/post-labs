@@ -70,17 +70,17 @@ export default function Cards() {
     >
       {/* Teen cards */}
       <div className="p-6 card shadow-lg rounded-2xl bg-black text-white w-64 text-center">
-        <Image src="/icon-1.png" alt="icon" width={60} height={60} />
+        <Image src="/icon-1.png" alt="icon" width={60} height={60} unoptimized/>
         <p className="mt-4 text-lg font-medium">Empowering Creators.</p>
       </div>
 
       <div className="p-6 card shadow-lg rounded-2xl bg-black text-white w-64 text-center">
-        <Image src="/icon.svg" alt="icon" width={60} height={60} />
+        <Image src="/icon.svg" alt="icon" width={60} height={60} unoptimized/>
         <p className="mt-4 text-lg font-medium">Transforming Publishing.</p>
       </div>
 
       <div className="p-6 card shadow-lg rounded-2xl bg-black text-white w-64 text-center">
-        <Image src="/icon-3.png" alt="icon" width={60} height={60} />
+        <Image src="/icon-3.png" alt="icon" width={60} height={60} unoptimized />
         <p className="mt-4 text-lg font-medium">Reclaiming Canadian Media.</p>
       </div>
     </div>

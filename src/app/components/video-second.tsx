@@ -32,7 +32,7 @@ const VideoSectionSecond = () => {
         src="/map.jpg"
         alt="Poster"
         className="absolute top-0 left-0 w-full h-full object-cover opacity-0"
-        id="poster" width={100} height={100}
+        id="poster" width={100} height={100} unoptimized
       />
 
       {/* Text Overlay */}

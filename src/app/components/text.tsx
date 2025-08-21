@@ -45,7 +45,7 @@ export default function TextSection() {
             alt="Background Icon"
             className="opacity-71 icon"
             width={100}
-            height={100}
+            height={100} unoptimized
           />
           <div className="absolute inset-0 flex items-center justify-center md:justify-start px-4">
             <p
@@ -90,7 +90,7 @@ export default function TextSection() {
           <Image
             src="/image-6.png"
             alt="Background Icon"
-            className="opacity-71 icon"
+            className="opacity-71 icon" unoptimized
             width={100}
             height={100}
           />
