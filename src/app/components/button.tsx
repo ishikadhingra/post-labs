@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -8,87 +8,59 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function FloatingButtons() {
   const btnRef = useRef<HTMLDivElement | null>(null);
-  const contactRef = useRef<HTMLAnchorElement | null>(null);
+  const [active, setActive] = useState<"about" | "contact">("about");
 
-  // Scroll animation for floating buttons
   useEffect(() => {
     if (!btnRef.current) return;
 
-    gsap.fromTo(
-      btnRef.current,
-      { y: 100, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".cards",
-          start: "bottom center",
-          endTrigger: "footer",
-          end: "top center",
-          scrub: false,
-          toggleActions: "play reverse play reverse",
-        },
-      }
-    );
-  }, []);
+    // By default show buttons
+    gsap.set(btnRef.current, { autoAlpha: 1 });
 
-  // GSAP hover effect for Contact button
-  useEffect(() => {
-    const el = contactRef.current;
-    if (!el) return;
-
-    const onEnter = () => {
-      gsap.to(el, {
-        backgroundColor: "#ffffff",
-        color: "#000000",
-        duration: 0.4,
-        ease: "power2.out",
-      });
-    };
-
-    const onLeave = () => {
-      gsap.to(el, {
-        backgroundColor: "transparent",
-        color: "#ffffff",
-        duration: 0.4,
-        ease: "power2.out",
-      });
-    };
-
-    el.addEventListener("mouseenter", onEnter);
-    el.addEventListener("mouseleave", onLeave);
-
-    return () => {
-      el.removeEventListener("mouseenter", onEnter);
-      el.removeEventListener("mouseleave", onLeave);
-    };
+    // Footer aate hi hide karo
+    ScrollTrigger.create({
+      trigger: "footer", 
+      start: "top bottom", // footer viewport ke andar aate hi
+      onEnter: () => gsap.to(btnRef.current, { autoAlpha: 0, y: 50, duration: 0.5 }),
+      onLeaveBack: () =>
+        gsap.to(btnRef.current, { autoAlpha: 1, y: 0, duration: 0.5 }),
+    });
   }, []);
 
   return (
+  <div
+  ref={btnRef}
+  className="fixed bottom-6 w-full flex justify-center z-50 hidden md:flex"
+>
+  <div className="relative flex items-center bg-[#00000085] text-white w-[213px] h-[54px] rounded-full shadow-lg overflow-hidden">
+    {/* Active highlight */}
     <div
-      ref={btnRef}
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50"
-    >
-      <div className="flex items-center bg-[#00000085] text-white w-[213px] h-[54px] rounded-full shadow-lg overflow-hidden">
-        {/* About Button (Default Active) */}
-        <Link href="#about" passHref className="bg-white text-black rounded-full w-1/2 h-full flex items-center justify-center">
-         
-            About
-         
-        </Link>
+      className={`absolute top-0 h-full w-1/2 bg-white rounded-full transition-all duration-500 ease-in-out ${
+        active === "about" ? "left-0" : "left-1/2"
+      }`}
+    ></div>
 
-        {/* Contact Button (Animated on hover with GSAP) */}
-        <Link href="#contact" passHref>
-          <Link
-            href={"contactRef"}
-            className="w-1/2 h-full flex items-center justify-center rounded-full"
-          >
-            Contact
-          </Link>
-        </Link>
-      </div>
-    </div>
+    <Link
+      href="#about"
+      onClick={() => setActive("about")}
+      className={`relative z-10 w-1/2 h-full flex items-center justify-center font-medium transition-colors duration-300 ${
+        active === "about" ? "text-black" : "text-white"
+      }`}
+    >
+      About
+    </Link>
+
+    <Link
+      href="#contact"
+      onClick={() => setActive("contact")}
+      className={`relative z-10 w-1/2 h-full flex items-center justify-center font-medium transition-colors duration-300 ${
+        active === "contact" ? "text-black" : "text-white"
+      }`}
+    >
+      Contact
+    </Link>
+  </div>
+</div>
+
+
   );
 }

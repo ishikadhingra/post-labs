@@ -26,7 +26,7 @@ export default function Cards() {
 
     // Step 2: Scroll pe spread
     gsap.to(cards[0], {
-      x: -300, // left card tree ke left
+      x: -340, // left card tree ke left
      rotate:0,
       duration: 1.2,
       ease: "power3.inOut",
@@ -50,7 +50,7 @@ export default function Cards() {
     });
 
     gsap.to(cards[2], {
-      x: 300, // right card tree ke right
+      x: 340, // right card tree ke right
      rotate
      :0,
       duration: 1.2,
